@@ -1,0 +1,39 @@
+
+html{
+    font-family: Arial;
+}
+
+
+.js-subscribe-button{
+   background-color: black;
+   color: aliceblue;
+   font-weight: 700;
+   padding: 10px 15px;
+   border-radius: 50px;
+   border: none;
+}
+.js-subscribed{
+    background-color: white;
+    color: black;
+}
+.title{
+    margin-top: 50px;
+}
+
+
+.js-cost-input{
+    padding: 10px;
+    font-size: 15px;
+}
+
+.js-calculate-button{
+    background-color: green;
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+.rock{
+    margin-top: 55px;
+}
