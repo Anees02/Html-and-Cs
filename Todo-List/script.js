@@ -43,10 +43,10 @@ function AddTodoList(){
     jsDate.value = '' ;
 }
 
-function deleteTodo(index){
-    todoList3.splice(index,1);
-    retreveList();
-}
+// function deleteTodo(index){
+//     todoList3.splice(index,1);
+//     retreveList();
+// }
 
 function retreveList(){
     let result = '';
@@ -55,8 +55,17 @@ function retreveList(){
         `<div class="js-result-list">
             <div>${object.input}</div>
             <div>${object.date}</div>
-            <button class = "js-delete-button" onClick = deleteTodo(${index})>Delete</button>
+            <button class = "js-delete-button">Delete</button>
         </div>`;
     })
     document.querySelector('.js-result3').innerHTML = result;
+
+    //we use to get all list and delete the particular which is clicked
+    document.querySelectorAll('.js-delete-button')
+        .forEach((delButoon,index) =>{
+            delButoon.addEventListener('click',()=>{
+                todoList3.splice(index,1);
+                retreveList();
+            })
+        })
 }

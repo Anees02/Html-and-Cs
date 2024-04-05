@@ -107,3 +107,19 @@ function autoplay(){
     }
 }
 
+
+// keyDown method if r is pressed then rock is selected
+// if p is pressed paper is selected
+// if s is presed scissor is selected.
+
+document.body.addEventListener('keydown',(event)=>{
+    if(event.key == 'r'){
+        startGame(0)
+    }
+    else if(event.key == 'p'){
+        startGame(1);
+    }
+    else if(event.key == 's'){
+        startGame(2);
+    }
+})
