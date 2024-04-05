@@ -8,7 +8,7 @@ if(!score){
 }
 updateScoreElement();
 
-function computerTurn(){
+function giveRandom(){
     return Math.floor(Math.random()*3);
 }
 
@@ -23,11 +23,11 @@ function getElement(i){
     return 'img3';
 
 }
-function ourScore(comSelect,ourSelect){
+function startGame(ourSelect){
     let b = true;
     let tie = false;
-    let comScore = comSelect();
-    console.log(comScore, ourSelect);
+    let comScore = giveRandom();
+    
     if(ourSelect == 0 && comScore != 0){         
         if(comScore == 1){
             score.lose += 1;
@@ -91,3 +91,19 @@ function updateScoreElement(){
     document.querySelector('.js-score')
         .innerHTML = `Wins: ${score.win}, Losses: ${score.lose}, Ties: ${score.tie}`;
 }
+
+function autoplay(){
+    let btn = document.querySelector('.js-autoplay');
+    if(btn.innerHTML == 'Auto Play'){
+        btn.innerHTML = 'Stop Play';
+        const myTimer = setInterval(function (){
+                let ourTurn = giveRandom();
+                startGame(ourTurn);
+        },1000);
+        localStorage.setItem('timer',myTimer);
+    }else{
+        btn.innerHTML = 'Auto Play';
+        clearInterval(localStorage.getItem('timer'));
+    }
+}
+

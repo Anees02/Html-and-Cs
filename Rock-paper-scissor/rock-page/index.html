@@ -6,21 +6,20 @@
     <title>Document</title>
     <link rel="stylesheet" href="index.css">
 </head>
-<body>
     <p class="title">Rock Paper Scissors</p>
-    <button onclick= ourScore(computerTurn,0) class="move-button">
+    <button onclick= startGame(0) class="move-button">
         <img class="move-icon" src="img1.png" alt="rock">
     </button>
-    <button onclick= ourScore(computerTurn,1) class="move-button">
+    <button onclick= startGame(1) class="move-button">
         <img class="move-icon" src="img2.png" alt="rock">
     </button>
-    <button onclick= ourScore(computerTurn,2)  class="move-button">
+    <button onclick= startGame(2)  class="move-button">
         <img class="move-icon" src="img3.png" alt="rock">
     </button>
     <p class="js-result"></p>
     <p class="js-moves-chosen"></p>
     <p class="js-score"></p>
     <button class="js-reset" onclick= reset()>Reset Score</button>
+    <button class="js-autoplay" onclick= autoplay()>Auto Play</button>
     <script src="index.js"></script>
-</body>
 </html>
