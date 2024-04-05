@@ -28,8 +28,10 @@ body{
     margin-top: 50px;
 }
 
-.js-reset{
+.js-reset,
+.js-autoplay{
     border:none;
     padding: 8px 15px;
     font-size: 15px;
+    cursor: pointer;
 }
