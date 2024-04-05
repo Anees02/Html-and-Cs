@@ -37,17 +37,26 @@ function AddTodoList(){
         input,
         date
     });
+    retreveList();
+    
+    input3.value = '';
+    jsDate.value = '' ;
+}
 
+function deleteTodo(index){
+    todoList3.splice(index,1);
+    retreveList();
+}
+
+function retreveList(){
     let result = '';
-    todoList3.forEach(function (object){
+    todoList3.forEach(function (object,index){
         result += 
         `<div class="js-result-list">
             <div>${object.input}</div>
             <div>${object.date}</div>
-            <button class = "js-delete-button">Delete</button>
+            <button class = "js-delete-button" onClick = deleteTodo(${index})>Delete</button>
         </div>`;
     })
     document.querySelector('.js-result3').innerHTML = result;
-    input3.value = '';
-    jsDate.value = '' ;
 }
