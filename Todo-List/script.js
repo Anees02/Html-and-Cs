@@ -67,5 +67,5 @@ function retreveList(){
                 todoList3.splice(index,1);
                 retreveList();
             })
-        })
+        });
 }
