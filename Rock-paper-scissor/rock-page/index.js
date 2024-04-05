@@ -114,7 +114,7 @@ function autoplay(){
 
 document.body.addEventListener('keydown',(event)=>{
     if(event.key == 'r'){
-        startGame(0)
+        startGame(0);
     }
     else if(event.key == 'p'){
         startGame(1);
