@@ -1,0 +1,44 @@
+html{
+    font-family: Arial;
+}
+.title{
+    margin-top: 50px;
+}
+
+/* todo List last-practise */
+
+.todo-list,
+.js-result-list{
+    display: grid;
+    grid-template-columns: 200px 150px 100px;
+    align-items: center;
+    column-gap: 10px;
+    margin-bottom: 10px;
+}
+
+.todo-list{
+    align-items: stretch;
+}
+
+.input3,
+.date{
+    padding: 6px;
+    font-size: 15px;
+}
+
+.add3-button,
+.js-delete-button{
+    color: white;
+    border: none;
+    font-size: 15px;
+    padding: 10px 15px;
+}
+
+.js-delete-button{
+    background-color: darkred;
+}
+
+.add3-button{
+    background-color: green;
+}
+
