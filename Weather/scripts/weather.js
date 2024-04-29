@@ -1,10 +1,19 @@
 import {Climate} from './data/climate.js';
 async function getData(cityName){
-    const APIkey = '2e2981eb1f717465bc03166123dbc471';
-    let data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${APIkey}`)
-    let jsonData = await data.json();
-    const c1 = new Climate(jsonData);
-    return c1;
+    let internetOn = true;
+    try{
+        const APIkey = '2e2981eb1f717465bc03166123dbc471';
+        let data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${APIkey}`).catch((res)=>{internetOn = false;erorMsgHtml('Please Turn On The Internet')})
+        let jsonData = await data.json();
+        const c1 = new Climate(jsonData);
+        return c1;
+    }
+    catch(e){
+        if(internetOn){
+            erorMsgHtml('Please enter the city name correctly');
+        }
+        console.clear();   
+    }
 }
 
 
@@ -42,7 +51,7 @@ function loadCimateHtml(){
                     <img src="images/search.png" alt="">
                 </button>
             </header>
-            <div class="error-msg">Please enter the city name</div>
+            <div class="error-msg"></div>
             <section class="middle-section">
                 <div class="weather-image">
                     <img src="images/${res.mainImg}.png" alt="">
@@ -76,15 +85,45 @@ function loadCimateHtml(){
             </section>
             `;
             document.querySelector('.weather-card').innerHTML = weatherHtml;
+            toastMaker(res);
             renderWeather();
         })
+        .catch(()=>{})
     }
     else{
-        const shakeAnimationSearch = document.querySelector('.search-bar');
-        shakeAnimationSearch.classList.add('error');
-        setInterval(()=>{
-            shakeAnimationSearch.classList.remove('error');
-        },1000);
-        document.querySelector('.error-msg').classList.add('js-error-msg');
+        
+        erorMsgHtml('Please enter the city name')
     }
+        
+}
+
+
+function toastMaker(res){
+    let toast = document.querySelector('.toast');
+    if(res.temp >= 35){
+        
+        
+        toast.innerHTML = `<div class='toaster'>Please Drink Plenty of Water</div>`;
+        
+    }
+    if(res.mainImg == 'rain'){
+        toast.innerHTML = `<div class='toaster'>Please Carry an Umbrella</div>`
+    }
+    if(res.mainImg == 'snow' || res.temp < -10){
+        toast.innerHTML = `<div class='toaster'>Please Wear a coat</div>`
+    }
+    setTimeout(()=>{
+        document.querySelector('.toaster').remove();
+    },6000);
+}
+
+function erorMsgHtml(msg){
+    const shakeAnimationSearch = document.querySelector('.search-bar');
+    shakeAnimationSearch.classList.add('error');
+    setInterval(()=>{
+        shakeAnimationSearch.classList.remove('error');
+    },1000);
+    document.querySelector('.error-msg')
+        .innerHTML = msg;
+    
 }

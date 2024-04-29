@@ -34,12 +34,9 @@ header{
 }
 
 .error-msg{
-    opacity: 0;
-}
-.js-error-msg{
     color: whitesmoke;
-    opacity: 1;
 }
+
 
 .error{
     animation: shake 0.1s linear 10;
